@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Aptelic</title>
+    <meta name="description" content="Insights and updates from the world of technology">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0c1220;
+            --secondary: #1a2332;
+            --accent: #c9a87c;
+            --accent-gradient: linear-gradient(135deg, #d4b88c, #c9a87c);
+            --text: #e5e5e5;
+            --text-muted: #9ca3af;
+            --bg: #060910;
+            --card-bg: #111827;
+            --shadow: 0 4px 20px rgba(0,0,0,0.2);
+            --premium-gradient: linear-gradient(135deg, #1a2332 0%, #0c1220 100%);
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body { 
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .header-nav-container {
+            background: var(--premium-gradient);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 168, 124, 0.1);
+        }
+
+        .company-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+            background: rgba(201, 168, 124, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            background: var(--premium-gradient);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            color: var(--accent);
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 124, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(201, 168, 124, 0.1);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-category {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blog-title {
+            font-size: 1.4rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(201, 168, 124, 0.1);
+        }
+
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            opacity: 0.8;
+            transform: translateX(5px);
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-date i {
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: var(--premium-gradient);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(201, 168, 124, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .header-nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .company-logo {
+                margin-bottom: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-card {
+                margin: 0 1rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/7e2e1e7e7e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="header-nav-container">
+        <a href="index.html" class="company-logo">Aptelic</a>
+        <nav>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#about">About</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="careers.html">Careers</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </div>
+
+    <div class="hero-section">
+        <div class="hero-title">Tech Insights</div>
+        <div class="hero-subtitle">Stay updated with the latest in technology and innovation</div>
+    </div>
+
+    <main>
+        <section>
+            <div class="section-title">Latest Articles</div>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://source.unsplash.com/random/800x600?ai" alt="AI Technology">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Artificial Intelligence</div>
+                        <h2 class="blog-title">The Future of AI in Enterprise Solutions</h2>
+                        <p class="blog-excerpt">Explore how artificial intelligence is transforming business operations and decision-making processes.</p>
+                        <div class="blog-meta">
+                            <div class="blog-date">
+                                <i class="far fa-calendar"></i>
+                                <span>Aug 10, 2025</span>
+                            </div>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://source.unsplash.com/random/800x600?cloud" alt="Cloud Computing">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Cloud Computing</div>
+                        <h2 class="blog-title">Cloud Migration Strategies for 2025</h2>
+                        <p class="blog-excerpt">Learn about the latest approaches to migrating your infrastructure to the cloud securely and efficiently.</p>
+                        <div class="blog-meta">
+                            <div class="blog-date">
+                                <i class="far fa-calendar"></i>
+                                <span>Aug 8, 2025</span>
+                            </div>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://source.unsplash.com/random/800x600?mobile" alt="Mobile Development">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Mobile Development</div>
+                        <h2 class="blog-title">Cross-Platform Development Trends</h2>
+                        <p class="blog-excerpt">Discover the latest trends in mobile app development and cross-platform solutions.</p>
+                        <div class="blog-meta">
+                            <div class="blog-date">
+                                <i class="far fa-calendar"></i>
+                                <span>Aug 5, 2025</span>
+                            </div>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Aptelic. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentLocation = window.location.pathname;
+            if (currentLocation.includes('blog.html')) {
+                document.querySelector('nav a[href="blog.html"]').classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Automation | Aptelic</title>
+    <meta name="description" content="Enterprise workflow automation solutions for modern businesses">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0c1220;
+            --secondary: #1a2332;
+            --accent: #c9a87c;
+            --accent-gradient: linear-gradient(135deg, #d4b88c, #c9a87c);
+            --text: #e5e5e5;
+            --text-muted: #9ca3af;
+            --bg: #060910;
+            --card-bg: #111827;
+            --shadow: 0 4px 20px rgba(0,0,0,0.2);
+            --premium-gradient: linear-gradient(135deg, #1a2332 0%, #0c1220 100%);
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .header-nav-container {
+            background: var(--premium-gradient);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 168, 124, 0.1);
+        }
+
+        .company-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+            background: rgba(201, 168, 124, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            background: var(--premium-gradient);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            color: var(--accent);
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2.5rem;
+            border: 1px solid rgba(201, 168, 124, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(201, 168, 124, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .cta-section {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+            border: 1px solid rgba(201, 168, 124, 0.1);
+            color: var(--text);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(201, 168, 124, 0.3);
+        }
+
+        footer {
+            background: var(--premium-gradient);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(201, 168, 124, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .header-nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .company-logo {
+                margin-bottom: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Automation-specific pattern overlay */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a87c' fill-opacity='0.05'%3E%3Cpath d='M30 0l30 30-30 30L0 30 30 0zm0 10L10 30l20 20 20-20-20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.05;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/7e2e1e7e7e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="header-nav-container">
+        <a href="index.html" class="company-logo">Aptelic</a>
+        <nav>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#about">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="careers.html">Careers</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </div>
+
+    <div class="hero-section">
+        <div class="hero-title">Workflow Automation</div>
+        <div class="hero-subtitle">Streamline your business processes with intelligent automation</div>
+    </div>
+
+    <main>
+        <section>
+            <div class="section-title">Automation Solutions</div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <div class="feature-title">RPA Solutions</div>
+                    <div class="feature-desc">Robotic Process Automation for repetitive tasks and business workflows.</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="feature-title">Process Design</div>
+                    <div class="feature-desc">Custom workflow solutions engineered for maximum efficiency and scalability.</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <div class="feature-title">AI Integration</div>
+                    <div class="feature-desc">Intelligent automation powered by machine learning and artificial intelligence.</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="feature-title">Analytics</div>
+                    <div class="feature-desc">Real-time monitoring and insights for process optimization.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-project-diagram"></i></div>
+                    <div class="feature-title">Integration</div>
+                    <div class="feature-desc">Seamless connection with existing systems and third-party platforms.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-title">Security</div>
+                    <div class="feature-desc">Enterprise-grade security with audit trails and compliance features.</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Ready to Automate Your Workflows?</h2>
+            <p>Let's transform your business processes with intelligent automation.</p>
+            <a href="index.html#contact" class="cta-button">Start Your Project</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Aptelic. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentLocation = window.location.pathname;
+            if (currentLocation.includes('automation.html')) {
+                document.querySelector('nav a[href="index.html#services"]').classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
