@@ -47,15 +47,23 @@
             font-size: 2.5rem;
             font-weight: 600;
             letter-spacing: 3px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;  /* Reduced from 1rem */
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* Add styles for the logo link */
+        header > a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .hero {
-            margin-top: 1.5rem;
+            margin-top: 0.05rem;    /* Reduced from 1.5rem */
             font-size: 1.25rem;
             color: var(--text-muted);
             letter-spacing: 1px;
@@ -144,10 +152,10 @@
         .contact-section {
             background: var(--card-bg);
             border-radius: 8px;
-            padding: 3rem 2.5rem;
-            max-width: 600px;
+            padding: 4rem 3rem;
             margin: 3rem auto;
             border: 1px solid rgba(201, 168, 124, 0.1);
+            max-width: 800px;
         }
         .contact-section p {
             margin-bottom: 1rem;
@@ -190,7 +198,9 @@
             box-shadow: 0 4px 15px rgba(201, 168, 124, 0.3);
         }
         .social-links {
-            margin-top: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 168, 124, 0.1);
             text-align: center;
         }
         .social-links a {
@@ -226,6 +236,69 @@
                 font-size: 1.8rem;
                 margin: 3rem 0 2rem;
             }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-section {
+                padding: 3rem 1.5rem;
+                margin: 2rem 1rem;
+            }
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .contact-info h3,
+        .contact-form-container h3,
+        .social-links h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        .contact-item p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .social-links {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 168, 124, 0.1);
+            text-align: center;
+        }
+        .social-icons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        .social-icons a {
+            color: var(--accent);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            margin: 0;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            color: var(--text);
         }
     </style>
     <!-- Font Awesome for icons -->
@@ -233,7 +306,9 @@
 </head>
 <body>
     <header>
-        <div class="logo">Aptelic</div>
+        <a href="index.html" style="text-decoration: none;">
+            <div class="logo">Aptelic</div>
+        </a>
         <div class="hero">Empowering Businesses with Technology</div>
     </header>
     <nav>
@@ -288,17 +363,41 @@
         <section id="contact">
             <div class="section-title">Contact Us</div>
             <div class="contact-section">
-                <p>Have a project or question? Reach out to us!</p>
-                <form class="contact-form" action="mailto:contact@aptelic.com" method="POST" enctype="text/plain">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <p>info@aptelic.com</p>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <p>+91 968 996 6685</p>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>Mumbai, India</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <h3>Send Us a Message</h3>
+                        <form class="contact-form" action="mailto:info@aptelic.com" method="POST" enctype="text/plain">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="social-links">
-                    <a href="https://linkedin.com/company/aptelic" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/aptelic" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="mailto:contact@aptelic.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://linkedin.com/company/aptelic" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/aptelic" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="mailto:info@aptelic.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
